@@ -4,6 +4,8 @@ import Link from 'next/link'
 
 import { useRouter } from 'next/router';
 
+import TeamDetailsTable from '../../components/TeamDetailsTable';
+
 
 export async function getServerSideProps(context) {
   const res = await fetch(`https://young-wildwood-83401.herokuapp.com/teams_home_and_away_statistics`)
@@ -50,20 +52,10 @@ export default function TeamsStatistics({data}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <div className={styles.grid}>
-          
-              <Link href={`/teams-statistics/${teamDetails.team}`}>
-                  <a className={styles.card}>
-                  <h3>Team Name: {teamDetails.team}</h3>
-                  <p>Home Wins: {teamDetails.home_wins}</p>
-                  <p>Away Wins: {teamDetails.away_wins}</p>
-                  <p>Home Win Percentage: {teamDetails.home_win_percentage}</p>
-                  <p>Away Win Percentage: {teamDetails.away_win_percentage}</p>
-                </a>
-            </Link>
 
-        </div>
+      <main className={styles.main}>
+
+      <TeamDetailsTable teamDetails={teamDetails}/>
       </main>
 
       <footer className={styles.footer}>

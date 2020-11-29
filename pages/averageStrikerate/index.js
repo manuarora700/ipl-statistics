@@ -2,6 +2,8 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
+import MostRuns from '../../components/MostRuns';
+
 export async function getStaticProps(context) {
   const res = await fetch(`https://young-wildwood-83401.herokuapp.com/most_runs_average_strikerate`)
   const data = await res.json()
@@ -23,13 +25,15 @@ export async function getStaticProps(context) {
 }
 
 
-export default function MostRuns({data}) {
+export default function MostRunsPage({data}) {
   return (
     <div className={styles.container}>
       <Head>
         <title>IPL Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      
 
       <main className={styles.main}>
         <h1 className={styles.title}>
@@ -41,31 +45,8 @@ export default function MostRuns({data}) {
           {/* <code className={styles.code}>pages/index.js</code> */}
         </p>
 
-        {/* {data.map(team => {
-            <a href="#" className = {styles.card}>
-              <h3>Custom Team</h3>
-              <p>Custom Team Paragraph</p>
-            </a>
-            </a>
-        })} */}
-
-        
-
-        <div className={styles.grid}>
-          {data.map(stats => (
-              <Link href={`/player/${stats.batsman}`}>
-                <a className={styles.card}>
-                <h3>Name: {stats.batsman}</h3>
-                <p>Total Runs: {stats.total_runs}</p>
-                <p>Out: {stats.out}</p>
-                <p># of Balls: {stats.numberofballs}</p>
-                <p>Average: {stats.average}</p>
-                <p>StrikeRate: {stats.strikerate}</p>
-                <p>CLICK FOR PLAYER INFO</p>
-                </a>
-            </Link>
-          ))}
-        </div>
+       
+        <MostRuns mostRunsDetails={data}/>
       </main>
 
       <footer className={styles.footer}>
