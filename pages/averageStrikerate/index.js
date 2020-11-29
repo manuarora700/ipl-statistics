@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
 export async function getStaticProps(context) {
-  const res = await fetch(`https://young-wildwood-83401.herokuapp.com/teams`)
+  const res = await fetch(`https://young-wildwood-83401.herokuapp.com/most_runs_average_strikerate`)
   const data = await res.json()
 
   if (!data) {
@@ -23,7 +23,7 @@ export async function getStaticProps(context) {
 }
 
 
-export default function Home({data}) {
+export default function MostRuns({data}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -33,7 +33,7 @@ export default function Home({data}) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="/">IPL DASHBOARD</a>
+          Welcome to <a href="https://nextjs.org">IPL DASHBOARD</a>
         </h1>
 
         <p className={styles.description}>
@@ -52,11 +52,18 @@ export default function Home({data}) {
         
 
         <div className={styles.grid}>
-          {data.map(team => (
-            <a href="#" className={styles.card}>
-              <h3>{team.team1}</h3>
-
-            </a>
+          {data.map(stats => (
+              <Link href={`/player/${stats.batsman}`}>
+                <a className={styles.card}>
+                <h3>Name: {stats.batsman}</h3>
+                <p>Total Runs: {stats.total_runs}</p>
+                <p>Out: {stats.out}</p>
+                <p># of Balls: {stats.numberofballs}</p>
+                <p>Average: {stats.average}</p>
+                <p>StrikeRate: {stats.strikerate}</p>
+                <p>CLICK FOR PLAYER INFO</p>
+                </a>
+            </Link>
           ))}
         </div>
       </main>
