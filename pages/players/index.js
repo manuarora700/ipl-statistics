@@ -6,6 +6,9 @@ import { useState, useEffect } from 'react';
 
 import { Input, ButtonGroup } from "@chakra-ui/react"
 
+import PlayersTable from '../../components/PlayersTable';
+
+
 
 export async function getStaticProps(context) {
   const res = await fetch(`https://young-wildwood-83401.herokuapp.com/players`)
@@ -53,6 +56,8 @@ export default function Players({data}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+
+
       <Input
         type="text"
         placeholder="Search Players..."
@@ -62,17 +67,9 @@ export default function Players({data}) {
         onChange={handleChange}
       />
 
+
       <main className={styles.main}>
-        <div className={styles.grid}>
-          {searchResults.map(player => (
-            <Link href={`/player/${player.Player_Name}`} >
-            <a className={styles.card}>
-              <h3>{player.Player_Name}</h3>
-              <p>Cick for more info</p>
-            </a>
-            </Link>
-          ))}
-        </div>
+      <PlayersTable playerDetails={searchResults} />
       </main>
 
       <footer className={styles.footer}>

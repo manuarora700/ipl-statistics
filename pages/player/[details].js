@@ -4,6 +4,9 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 
+import '../../components/ViewData';
+import ViewData from '../../components/ViewData';
+
 export async function getServerSideProps(context) {
   const res = await fetch(`https://young-wildwood-83401.herokuapp.com/players`)
   const data = await res.json()
@@ -41,19 +44,21 @@ export default function Details({data}) {
     // console.log(name);
 
   return (
+    <>
+
     <div className={styles.container}>
       <Head>
         <title>IPL Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
+      
+      
 
       <main className={styles.main}>
-           
-              <h3>{playerDetails.Player_Name}</h3>
-              <p>{playerDetails.Country}</p>
-              <p>{playerDetails.DOB}</p>
-              <p>{playerDetails.Batting_Hand}</p>
-              <p>{playerDetails.Bowling_Skill}</p>
+
+      <ViewData playerDetails={playerDetails} />
+
             
 
 
@@ -70,5 +75,6 @@ export default function Details({data}) {
         </a>
       </footer>
     </div>
+    </>
   )
 }
