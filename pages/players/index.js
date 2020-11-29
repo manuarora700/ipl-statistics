@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
 export async function getStaticProps(context) {
-  const res = await fetch(`https://young-wildwood-83401.herokuapp.com/teams`)
+  const res = await fetch(`https://young-wildwood-83401.herokuapp.com/players`)
   const data = await res.json()
 
   if (!data) {
@@ -23,7 +23,7 @@ export async function getStaticProps(context) {
 }
 
 
-export default function Home({data}) {
+export default function Players({data}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -32,31 +32,14 @@ export default function Home({data}) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="/">IPL DASHBOARD</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by clicking on whichever card you want to see{' '}
-          {/* <code className={styles.code}>pages/index.js</code> */}
-        </p>
-
-        {/* {data.map(team => {
-            <a href="#" className = {styles.card}>
-              <h3>Custom Team</h3>
-              <p>Custom Team Paragraph</p>
-            </a>
-            </a>
-        })} */}
-
-        
-
         <div className={styles.grid}>
-          {data.map(team => (
-            <a href="#" className={styles.card}>
-              <h3>{team.team1}</h3>
-
+          {data.map(player => (
+            <Link href={`/player/${player.Player_Name}`} >
+            <a className={styles.card}>
+              <h3>{player.Player_Name}</h3>
+              <p>Cick for more info</p>
             </a>
+            </Link>
           ))}
         </div>
       </main>
