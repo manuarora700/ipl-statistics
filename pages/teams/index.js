@@ -2,13 +2,8 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
-import { useState, useEffect } from 'react';
-
-import { Input, ButtonGroup } from "@chakra-ui/react"
-
-
 export async function getStaticProps(context) {
-  const res = await fetch(`https://young-wildwood-83401.herokuapp.com/players`)
+  const res = await fetch(`https://young-wildwood-83401.herokuapp.com/teams`)
   const data = await res.json()
 
   if (!data) {
@@ -28,24 +23,7 @@ export async function getStaticProps(context) {
 }
 
 
-export default function Players({data}) {
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState(data);
-  console.log(data);
-  const handleChange = event => {
-    setSearchTerm(event.target.value);
-    
-  
-  };
-  useEffect(() => {
-    const results = data.filter(player =>
-      player.Player_Name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(results);
-  }, [searchTerm]);
-
-  console.log(searchResults);
+export default function Home({data}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -53,23 +31,25 @@ export default function Players({data}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Input
-        type="text"
-        placeholder="Search Players..."
-        mt={10}
-        maxW={400}
-        value={searchTerm}
-        onChange={handleChange}
-      />
-
       <main className={styles.main}>
+        <h1 className={styles.title}>
+          Teams
+        </h1>
+
+        <p className={styles.description}>
+          Click on cards to see Individual Performances{' '}
+          {/* <code className={styles.code}>pages/index.js</code> */}
+        </p>
+
+        
+
         <div className={styles.grid}>
-          {searchResults.map(player => (
-            <Link href={`/player/${player.Player_Name}`} >
-            <a className={styles.card}>
-              <h3>{player.Player_Name}</h3>
-              <p>Cick for more info</p>
-            </a>
+          {data.map(team => (
+              <Link href={`/teams-statistics/${team.team1}`}>
+                <a className={styles.card}>
+                <h3>{team.team1}</h3>
+
+                </a>
             </Link>
           ))}
         </div>
