@@ -1,17 +1,16 @@
 import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
+import styles from '../../../styles/Home.module.css'
 
 import { useRouter } from 'next/router';
 
-import '../../components/ViewData';
-import ViewData from '../../components/ViewData';
+import IndividualStats from '../../../components/IndividualStats';
 
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import Navigation from '../../components/Navigation';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
+import Navigation from '../../../components/Navigation';
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`https://young-wildwood-83401.herokuapp.com/players`)
+  const res = await fetch(`https://young-wildwood-83401.herokuapp.com/most_runs_average_strikerate`)
   const data = await res.json()
 
   if (!data) {
@@ -31,13 +30,13 @@ export async function getServerSideProps(context) {
 }
 
 function filterByValue(players, nameOfPlayer) {
-  return players.filter(name => name.Player_Name === nameOfPlayer)
+  return players.filter(name => name.batsman === nameOfPlayer)
 }
 
-export default function Details({data}) {
+export default function IndividualDetails({data}) {
 
     const router = useRouter();
-    const name = router.query.details;
+    const name = router.query.individualStats;
 
     let playerDetails = filterByValue(data, name)[0];
   return (
@@ -50,9 +49,9 @@ export default function Details({data}) {
       </Head>
 
       <main className={styles.main}>
-        <Header content="Player details" description="Individual player details" />
+        <Header content="Individual player details" description="Most runs and average strikerate of an individual" />
         <Navigation home="/" goBack="/players" />
-        <ViewData playerDetails={playerDetails} />
+        <IndividualStats individualDetails={playerDetails} />
       </main>
 
       <Footer />

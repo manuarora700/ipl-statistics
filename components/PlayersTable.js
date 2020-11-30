@@ -5,10 +5,10 @@ import { Table, Tr, Th, Td } from './Table';
 
 const PlayersTable = ({playerDetails}) => {
   return (
-    <Table mb={20} mt={40} w={400}>
+    <Table mb={20} mt={40} w={600}>
       <thead>
         <Tr>
-          <Th w="200px">Name</Th>
+          <Th w="300px">Name</Th>
           <Th>Details</Th>
         </Tr>
       </thead>

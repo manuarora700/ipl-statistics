@@ -1,8 +1,13 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Link from 'next/link'
+
+import Footer from '../../components/Footer'
 
 import MostRuns from '../../components/MostRuns';
+
+
+import Navigation from '../../components/Navigation';
+import Header from '../../components/Header';
 
 export async function getStaticProps(context) {
   const res = await fetch(`https://young-wildwood-83401.herokuapp.com/most_runs_average_strikerate`)
@@ -34,31 +39,13 @@ export default function MostRunsPage({data}) {
       </Head>
 
       
-
+      
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">IPL DASHBOARD</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by clicking on whichever card you want to see{' '}
-          {/* <code className={styles.code}>pages/index.js</code> */}
-        </p>
-
-       
+        <Header content="Average Strikerate" description="Most runs and average strikerate for every player" />
+        <Navigation home="/" goBack="/"/>
         <MostRuns mostRunsDetails={data}/>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+    <Footer />
     </div>
   )
 }
