@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const IndividualStats = ({individualDetails}) => {
-    console.log(individualDetails);
   return (
     <Table mb={20} mt={40} w={1000}>
       <thead>
