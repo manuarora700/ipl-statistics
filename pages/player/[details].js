@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 
@@ -41,12 +40,6 @@ export default function Details({data}) {
     const name = router.query.details;
 
     let playerDetails = filterByValue(data, name)[0];
-
-
-    console.log(playerDetails);
-
-    // console.log(name);
-
   return (
     <>
 
@@ -57,13 +50,9 @@ export default function Details({data}) {
       </Head>
 
       <main className={styles.main}>
-      <Header content="Player details" description="Individual player details" />
+        <Header content="Player details" description="Individual player details" />
         <Navigation home="/" goBack="/players" />
-      <ViewData playerDetails={playerDetails} />
-
-            
-
-
+        <ViewData playerDetails={playerDetails} />
       </main>
 
       <Footer />

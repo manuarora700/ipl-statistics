@@ -23,7 +23,8 @@ const IndividualStats = ({individualDetails}) => {
         </Tr>
       </thead>
       <tbody>
-          <Box as="tr" key={individualDetails.batsman}>
+        {individualDetails ? (
+        <Box as="tr" key={individualDetails.batsman}>
             <Td fontWeight="medium">{individualDetails.batsman}</Td>
             <Td>{individualDetails.total_runs}</Td>
             <Td>
@@ -39,11 +40,22 @@ const IndividualStats = ({individualDetails}) => {
               {individualDetails.strikerate}
             </Td>
             <Td>
+              
               <Link href={`/player/${individualDetails.batsman}`}>
                   <a>View Details</a>
               </Link>
             </Td>
-          </Box>
+          </Box>) : (
+          <Box as="tr">
+            <Td>Details donot exist</Td>
+            <Td>Details donot exist</Td>
+            <Td>Details donot exist</Td>
+            <Td>Details donot exist</Td>
+            <Td>Details donot exist</Td>
+            <Td>Details donot exist</Td>
+            <Td>Details donot exist</Td>
+          </Box>) }
+          
       </tbody>
     </Table>
   );

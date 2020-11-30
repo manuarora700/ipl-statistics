@@ -6,7 +6,6 @@ import Navigation from '../../components/Navigation';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-import { Stack, Button } from '@chakra-ui/react'
 
 export async function getStaticProps(context) {
   const res = await fetch(`https://young-wildwood-83401.herokuapp.com/teams`)

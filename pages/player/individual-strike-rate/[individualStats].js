@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import styles from '../../../styles/Home.module.css'
-import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 
@@ -40,12 +39,6 @@ export default function IndividualDetails({data}) {
     const name = router.query.individualStats;
 
     let playerDetails = filterByValue(data, name)[0];
-
-
-    console.log(playerDetails);
-
-    // console.log(name);
-
   return (
     <>
 
@@ -56,10 +49,9 @@ export default function IndividualDetails({data}) {
       </Head>
 
       <main className={styles.main}>
-      <Header content="Individual player details" description="Most runs and average strikerate of an individual" />
+        <Header content="Individual player details" description="Most runs and average strikerate of an individual" />
         <Navigation home="/" goBack="/players" />
-      <IndividualStats individualDetails={playerDetails} />
-
+        <IndividualStats individualDetails={playerDetails} />
       </main>
 
       <Footer />

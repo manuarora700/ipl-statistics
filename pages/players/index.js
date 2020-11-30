@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Link from 'next/link'
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -8,7 +7,7 @@ import Navigation from '../../components/Navigation';
 
 import { useState, useEffect } from 'react';
 
-import { Input, ButtonGroup } from "@chakra-ui/react"
+import { Input } from "@chakra-ui/react"
 
 import PlayersTable from '../../components/PlayersTable';
 
@@ -39,7 +38,6 @@ export default function Players({data}) {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(data);
-  console.log(data);
   const handleChange = event => {
     setSearchTerm(event.target.value);
     
@@ -52,7 +50,6 @@ export default function Players({data}) {
     setSearchResults(results);
   }, [searchTerm]);
 
-  console.log(searchResults);
   return (
     <div className={styles.container}>
       <Head>
@@ -63,15 +60,15 @@ export default function Players({data}) {
       <main className={styles.main}>
         <Header content="Player details" description="View details of each and every cricket player" />
         <Navigation home="/" goBack="/" />
-      <Input
-        type="text"
-        placeholder="Search Players..."
-        mt={10}
-        maxW={400}
-        value={searchTerm}
-        onChange={handleChange}
-      />
-      <PlayersTable playerDetails={searchResults} />
+        <Input
+          type="text"
+          placeholder="Search Players..."
+          mt={10}
+          maxW={400}
+          value={searchTerm}
+          onChange={handleChange}
+        />
+        <PlayersTable playerDetails={searchResults} />
       </main>
 
     <Footer />

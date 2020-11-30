@@ -5,9 +5,7 @@ import Link from 'next/link'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-import { Button, ButtonGroup } from "@chakra-ui/react"
-
-export default function Home({data}) {
+export default function Home() {
   return (
     <>
     <div className={styles.container}>

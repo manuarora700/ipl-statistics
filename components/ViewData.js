@@ -14,7 +14,7 @@ const ViewData = ({playerDetails}) => {
           <Th>DOB</Th>
           <Th>Batting</Th>
           <Th>Bowling</Th>
-          <Th>Most Runa & Average Strikerate</Th>
+          <Th>Most Runs & Average Strikerate</Th>
           <Th>{''}</Th>
         </Tr>
       </thead>

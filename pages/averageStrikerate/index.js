@@ -1,12 +1,10 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Link from 'next/link'
 
 import Footer from '../../components/Footer'
 
 import MostRuns from '../../components/MostRuns';
 
-import { Stack, Button } from '@chakra-ui/react';
 
 import Navigation from '../../components/Navigation';
 import Header from '../../components/Header';

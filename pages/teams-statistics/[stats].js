@@ -1,12 +1,9 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Link from 'next/link'
 
 import { useRouter } from 'next/router';
 
 import TeamDetailsTable from '../../components/TeamDetailsTable';
-
-import { Stack, Button } from '@chakra-ui/react';
 
 import Navigation from '../../components/Navigation';
 import Header from '../../components/Header';
@@ -40,12 +37,8 @@ function filterByValueTeam(teams, teamName) {
 
 export default function TeamsStatistics({data}) {
 
-  console.log(data);
     const router = useRouter();
     const teamName = router.query.stats;
-    console.log(teamName);
-    // console.log(teamName);
-
 
     let teamDetails = filterByValueTeam(data, teamName)[0];
 
