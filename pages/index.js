@@ -2,6 +2,9 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 import { Button, ButtonGroup } from "@chakra-ui/react"
 
 export default function Home({data}) {
@@ -15,14 +18,7 @@ export default function Home({data}) {
 
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="/">IPL DASHBOARD</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by clicking on whichever card you want to see{' '}
-          {/* <code className={styles.code}>pages/index.js</code> */}
-        </p>
+        <Header content="Welcome to IPL dashboard" description="Click on the cards to view data" />
 
         <div className={styles.grid}>
           
@@ -49,19 +45,9 @@ export default function Home({data}) {
           
         </div>
 
-        <Button colorScheme="blue">Button</Button>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <Footer />
     </div>
     </>
   )

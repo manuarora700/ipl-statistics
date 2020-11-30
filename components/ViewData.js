@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, Code, IconButton, Switch, Text } from '@chakra-ui/react';
 import { Table, Tr, Th, Td } from './Table';
 
+import Link from 'next/link';
+
 const ViewData = ({playerDetails}) => {
   return (
     <Table mb={20} mt={40} w={1000}>
@@ -12,6 +14,7 @@ const ViewData = ({playerDetails}) => {
           <Th>DOB</Th>
           <Th>Batting</Th>
           <Th>Bowling</Th>
+          <Th>Most Runa & Average Strikerate</Th>
           <Th>{''}</Th>
         </Tr>
       </thead>
@@ -28,6 +31,11 @@ const ViewData = ({playerDetails}) => {
             </Td>
             <Td>
               {playerDetails.Bowling_Skill}
+            </Td>
+            <Td>
+              <Link href={`/player/individual-strike-rate/${playerDetails.Player_Name}`}>
+                <a>View Data</a>
+              </Link>
             </Td>
           </Box>
         

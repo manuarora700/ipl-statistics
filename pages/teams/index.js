@@ -2,6 +2,12 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
+import Navigation from '../../components/Navigation';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+
+import { Stack, Button } from '@chakra-ui/react'
+
 export async function getStaticProps(context) {
   const res = await fetch(`https://young-wildwood-83401.herokuapp.com/teams`)
   const data = await res.json()
@@ -32,17 +38,8 @@ export default function Home({data}) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Teams
-        </h1>
-
-        <p className={styles.description}>
-          Click on cards to see Individual Performances{' '}
-          {/* <code className={styles.code}>pages/index.js</code> */}
-        </p>
-
-        
-
+        <Header content="Teams" description="click on the card to view individual stats" />
+        <Navigation home="/" goBack="/" />
         <div className={styles.grid}>
           {data.map(team => (
               <Link href={`/teams-statistics/${team.team1}`}>
@@ -55,16 +52,7 @@ export default function Home({data}) {
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <Footer />
     </div>
   )
 }

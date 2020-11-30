@@ -6,6 +6,12 @@ import { useRouter } from 'next/router';
 
 import TeamDetailsTable from '../../components/TeamDetailsTable';
 
+import { Stack, Button } from '@chakra-ui/react';
+
+import Navigation from '../../components/Navigation';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+
 
 export async function getServerSideProps(context) {
   const res = await fetch(`https://young-wildwood-83401.herokuapp.com/teams_home_and_away_statistics`)
@@ -54,20 +60,13 @@ export default function TeamsStatistics({data}) {
 
 
       <main className={styles.main}>
+      <Header content="Team Statistics" description="Induvidual performances and stats" />
+      <Navigation home="/" goBack="/teams" />
 
       <TeamDetailsTable teamDetails={teamDetails}/>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <Footer />
     </div>
   )
 }
